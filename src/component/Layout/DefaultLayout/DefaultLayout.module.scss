@@ -1,0 +1,12 @@
+.wrapper {
+    flex-direction: column;
+    align-items: center;
+}
+.container {
+    display: flex;
+    background-color: #333;
+}
+.content {
+    background-color: aqua;
+    flex: 1;
+}
