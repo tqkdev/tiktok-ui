@@ -99,10 +99,11 @@
     // margin-right: 16px;
 }
 
-.icon {
-    margin-right: 4px;
-    font-size: 1.4rem;
-}
-.point {
+.more-btn {
+    font-size: 1.8rem;
     margin: 0 35px 0 20px;
+    background-color: transparent;
+    color: rgba(22, 24, 35, 1);
+    padding: 0 8px;
+    cursor: pointer;
 }

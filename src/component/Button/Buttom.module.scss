@@ -1,5 +1,8 @@
 .wrapper {
-    padding: 6px 20px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    line-height: 36px;
     border-radius: 4px;
     min-height: 36px;
     margin-right: 20px;
@@ -7,6 +10,7 @@
     font-size: 1.6rem;
     min-width: 100px;
     cursor: pointer;
+    background-color: transparent;
 }
 .primary {
     color: rgba(255, 255, 255, 1);
@@ -25,4 +29,13 @@
     &:hover {
         background-color: rgba(22, 24, 35, 0.03);
     }
+}
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.icon + .title,
+.title + .icon {
+    margin-left: 8px;
 }

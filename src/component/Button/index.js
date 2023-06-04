@@ -4,7 +4,7 @@ import styles from './Buttom.module.scss';
 
 const cx = className.bind(styles);
 
-function Button({ to, href, primary = false, outline = false, onClick, children, ...passProps }) {
+function Button({ to, href, primary = false, outline = false, onClick, children, leftIcon, rightIcon, ...passProps }) {
     let Comp = 'button';
     const props = {
         onClick,
@@ -18,13 +18,16 @@ function Button({ to, href, primary = false, outline = false, onClick, children,
         Comp = 'a';
     }
     const classes = cx('wrapper', {
+        [className]: className,
         primary,
         outline,
     });
 
     return (
         <Comp className={classes} {...props}>
-            <span>{children}</span>
+            {leftIcon && <div className={cx('icon')}>{leftIcon}</div>}
+            <span className={cx('title')}>{children}</span>
+            {rightIcon && <div className={cx('icon')}>{rightIcon}</div>}
         </Comp>
     );
 }

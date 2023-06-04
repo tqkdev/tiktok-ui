@@ -1,8 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import {
+    faCircleQuestion,
     faCircleXmark,
+    faEarthAsia,
     faEllipsisVertical,
+    faKeyboard,
     faMagnifyingGlass,
     faPlus,
     faSpinner,
@@ -14,8 +17,25 @@ import Button from '~/component/Button';
 import className from 'classnames/bind';
 import styles from './Header.module.scss';
 import AccountItem from '../../AccountItem';
+import Menu from '~/component/Popper/Menu';
 
 const cx = className.bind(styles);
+
+const MENU_ITEM = [
+    {
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        title: 'English',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        to: 'feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard and shortcuts',
+    },
+];
 
 function Header() {
     const [searchResult, setsearchResult] = useState([]);
@@ -62,16 +82,15 @@ function Header() {
                     </Tippy>
                 </span>
                 <div className={cx('action')}>
-                    <Button outline>
-                        <span>
-                            <FontAwesomeIcon className={cx('icon')} icon={faPlus} />
-                        </span>
+                    <Button outline leftIcon={<FontAwesomeIcon className={cx('icon')} icon={faPlus} />}>
                         Upload
                     </Button>
                     <Button primary>Log in</Button>
-                    <span className={cx('point')}>
-                        <FontAwesomeIcon icon={faEllipsisVertical} />
-                    </span>
+                    <Menu items={MENU_ITEM}>
+                        <button className={cx('more-btn')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </header>
