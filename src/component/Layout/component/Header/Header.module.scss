@@ -98,6 +98,27 @@
     display: flex;
     // margin-right: 16px;
 }
+.current-user {
+    display: flex;
+}
+.icon-user-mess {
+    cursor: pointer;
+    height: 36px;
+    width: 36px;
+    margin-right: 16px;
+    font-size: 2.2rem;
+    background-color: transparent;
+}
+.avatar-user {
+    background: center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    margin-right: 20px;
+}
 
 .more-btn {
     font-size: 1.8rem;

@@ -7,6 +7,17 @@
 
     div {
         box-shadow: none;
+
+        button {
+            div:last-child {
+                margin-left: 32px;
+                div {
+                    input {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
     }
 }
 .menu-item {
@@ -22,23 +33,30 @@
 
     &:hover {
         background: rgba(22, 24, 35, 0.03);
+        cursor: pointer;
+    }
+
+    &.saparate {
+        border-top: 1px solid rgba(22, 24, 35, 0.12);
     }
 }
 
-//dark-light
-.dark-light {
-    display: flex;
-    padding: 4px 12px;
-    justify-content: space-between;
+//header
+.header {
+    position: relative;
+    height: 50px;
+    margin-top: -10px;
+}
 
-    button {
-        background-color: transparent;
+.btn-back {
+    width: 50px;
+    height: 100%;
+    background-color: transparent;
+}
 
-        div {
-            display: inline-block;
-            padding: 0 23px 0 5px;
-            height: 20px;
-            width: 20px;
-        }
-    }
+.header-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

@@ -1,50 +1,59 @@
 import { Wrapper as PopperWrapper } from '~/component/Popper';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react/headless';
 import MenuItem from './MenuItem';
-import { faMoon } from '@fortawesome/free-solid-svg-icons';
-// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import className from 'classnames/bind';
 import styles from './Menu.module.scss';
+import Header from './Header';
+import { useState } from 'react';
 
 const cx = className.bind(styles);
 
 function Menu({ children, items = [] }) {
+    const [history, setHistory] = useState([{ data: items }]);
+    const current = history[history.length - 1];
+
     const renderItems = () => {
-        return items.map((item, index) => <MenuItem key={index} data={item} />);
+        return current.data.map((item, index) => {
+            const isParent = !!item.children;
+
+            return (
+                <MenuItem
+                    key={index}
+                    data={item}
+                    onClick={() => {
+                        if (isParent) {
+                            setHistory((prev) => [...prev, item.children]);
+                        }
+                    }}
+                />
+            );
+        });
     };
 
     return (
         <Tippy
             interactive
+            offset={[20, 10]}
             placement="bottom-end"
-            visible
+            delay={[0, 700]}
             render={(attrs) => (
                 <div className={cx('content')} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
-                        {renderItems()}
+                        {history.length > 1 && (
+                            <Header
+                                title={'Language'}
+                                onBack={() => {
+                                    setHistory((prev) => prev.slice(0, prev.length - 1));
+                                }}
+                            />
+                        )}
 
-                        <div className={cx('dark-light')}>
-                            <button>
-                                <div>
-                                    <FontAwesomeIcon icon={faMoon} />
-                                </div>
-                                Dark mode
-                            </button>
-                            <div class="form-check form-switch">
-                                <input
-                                    class="form-check-input"
-                                    type="checkbox"
-                                    role="switch"
-                                    id="flexSwitchCheckDefault"
-                                />
-                            </div>
-                        </div>
+                        {renderItems()}
                     </PopperWrapper>
                 </div>
             )}
+            onHide={() => setHistory((prev) => prev.slice(0, 1))}
         >
             {children}
         </Tippy>
