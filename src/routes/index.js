@@ -9,7 +9,7 @@ import HeaderOnly from '~/component/Layout/HeaderOnly';
 const publicRoutes = [
     { path: '/', Comment: Home },
     { path: '/following', Comment: Following },
-    { path: '/profile', Comment: Profile },
+    { path: '/@:nickname', Comment: Profile },
     { path: '/upload', Comment: Upload, layout: HeaderOnly },
     { path: '/search', Comment: Search, layout: null },
 ];
